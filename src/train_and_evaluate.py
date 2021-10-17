@@ -27,11 +27,11 @@ def train_and_evaluate(config_path):
     random_state=config['base']['random_state']
     model_dir=config['model_dir']
 
-    c=config['training']['SVC']['C']
-    kernel=config['training']['SVC']['kernel']
-    degree=config['training']['SVC']['degree']
-    gamma=config['training']['SVC']['gamma']
-    tol=config['training']['SVC']['tol']
+    c=config['estimators']['SVC']['params']['C']
+    kernel=config['estimators']['SVC']['params']['kernel']
+    degree=config['estimators']['SVC']['params']['degree']
+    gamma=config['estimators']['SVC']['params']['gamma']
+    tol=config['estimators']['SVC']['params']['tol']
    
     target=config['base']['target_col']
     

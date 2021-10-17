@@ -29,22 +29,22 @@ stages:
       - data/processed/test_data.csv
 
   train_and_evaluate:
-    cmd: python src/train_and_evaluate.py
+    cmd: python src/train_and_evaluate.py --config=config/params.yaml
     deps:
-      - src/train_and_evaluate.py
-      - data/processed/train_data.csv
-      - data/processed/test_data.csv
+    - src/train_and_evaluate.py
+    - data/processed/train_data.csv
+    - data/processed/test_data.csv
     params:
-      - estimators.SVC.params.C
-      - estimators.SVC.params.kernel
-      - estimators.SVC.params.degree
-      - estimators.SVC.params.gamma
-      - estimators.SVC.params.tol
+    - estimators.SVC.params.C
+    - estimators.SVC.params.kernel
+    - estimators.SVC.params.degree
+    - estimators.SVC.params.gamma
+    - estimators.SVC.params.tol
       
     metrics:
-      - report/scores.json:
-          cache: false
-      - report/params.json:
-          cache: false
+    - report/scores.json:
+        cache: false
+    - report/json:
+        cache: false
     outs:
-      - saved_models/model.joblib
+    - saved_models/model.joblib

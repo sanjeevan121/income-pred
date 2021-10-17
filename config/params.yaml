@@ -25,28 +25,6 @@ split_data:
   test_size: 0.2
 
 
-
-#train_data_preparation:
-#  schema_training: config/schema_training.json
-#  good_validated_raw_dir: data/Training_Raw_files_validated/Good_raw
-# bad_validated_raw_dir: data/Training_Raw_files_validated/Bad_raw
-#  TrainingArchiveBadData: data/TrainingArchiveBadData
-#  Training_FileFromDB: data/Training_FileFromDB
-#  master_csv: master.csv
-
-#pred_data_preparation:
-#  prediction_db: Prediction.db
-# prediction_db_dir: Prediction_Database
- # schema_prediction: config/schema_prediction.json
- # good_validated_raw_dir: data/Prediction_Raw_files_validated/Good_raw
- # bad_validated_raw_dir: data/Prediction_Raw_files_validated/Bad_raw
-  #PredictionArchiveBadData: data/PredictionArchiveBadData
-  #Prediction_FileFromDB: data/Prediction_FileFromDB
-  #master_csv: master.csv
-  #Prediction_Output_File: Prediction_Output_File/Predictions.csv
-
-
-
 model_dir: saved_models
 
 reports:
@@ -76,13 +54,14 @@ data_preprocessing:
 #  mlflow: mlflow_artifacts
 
 
-training:
+estimators:
   SVC:
-    C: 1
-    kernel: rbf
-    degree: 3
-    gamma: scale
-    tol: 0.001
+    params:
+      C: 2
+      kernel: rbf
+      degree: 3
+      gamma: scale
+      tol: 0.001
     
 
 #  random_forest:

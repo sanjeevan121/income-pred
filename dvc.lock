@@ -42,12 +42,12 @@ stages:
       md5: c81fe3bb376d1ef43d52ff1e4d266be9
       size: 4735812
     - path: src/split_data.py
-      md5: 13b64e3ed6ee48bbf2a910724b96f5ae
-      size: 1080
+      md5: 21c4a4d0e67394fe2eb789e0ebe63a75
+      size: 1102
     outs:
     - path: data/processed/test_data.csv
-      md5: 369de5413f32b25b36ae4621875c4f18
-      size: 923487
+      md5: 271dff1e1c3d6a49e810fb7e9d7ff64f
+      size: 923439
     - path: data/processed/train_data.csv
-      md5: 76174feb9c2ac8aef864a3740467f6ec
-      size: 3692518
+      md5: 792313269c0748cc639546d42a6146b3
+      size: 3692566

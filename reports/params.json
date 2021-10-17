@@ -1,5 +1,5 @@
 {
-  "C": 1,
+  "C": 2,
   "kernel": "rbf",
   "degree": 3,
   "gamma": "scale",
