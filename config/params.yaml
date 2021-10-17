@@ -14,8 +14,8 @@ transformers:
   base_n_encoder: transformers/baseN_encoder.pkl
   standard_scaler: transformers/standard_scaler.pkl
 
-data_preprocessing:
-  preprocessed_data_dir: data/processed/data.csv
+preprocess:
+  preprocess_data_dir:  data/interim/interim_data.csv
  
 
 

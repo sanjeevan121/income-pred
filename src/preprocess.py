@@ -12,29 +12,29 @@ from numerical_scaling import scale_data
 import numpy as np
 
 def preprocessor(config_path):
-    try:
-        config=read_params(config_path)
-        raw_data_path=config['load_data']['raw_dataset_csv']
-        interim_path = config['data_preprocessing']['preprocessed_data_dir']
+    
+    config=read_params(config_path)
+    raw_data_path=config['load_data']['raw_dataset_csv']
+    interim_path = config['preprocess']['preprocess_data_dir']
 
-        df=pd.read_csv(raw_data_path,sep=',')
-        df['target']=df.salary.map({" <=50K":0," >50K":1})
-        y=np.array(df['target'])
-        y=y.reshape(32561,1)
-        df=df.drop(labels='salary',axis=1)
-        cat=encode_categories(config_path)
-        num=scale_data(config_path)
-        data_cat=np.array(cat)
-        data_num=np.array(num)
-        clean_data=np.c_[data_num,data_cat,y]
-        df=pd.DataFrame(clean_data)
-        for i in range(5,27):
-            df[i]=df[i].apply(lambda x: int(x))
+    df=pd.read_csv(raw_data_path,sep=',')
+    df['target']=df.salary.map({" <=50K":0," >50K":1})
+    y=np.array(df['target'])
+    y=y.reshape(32561,1)
+    df=df.drop(labels='salary',axis=1)
+    cat=encode_categories(config_path)
+    num=scale_data(config_path)
+    data_cat=np.array(cat)
+    data_num=np.array(num)
+    clean_data=np.c_[data_num,data_cat,y]
+    df=pd.DataFrame(clean_data)
+    for i in range(5,27):
+        df[i]=df[i].apply(lambda x: int(x))
 
-        df.to_csv(interim_path,index=False,sep=',',encoding='utf-8')
+    print(interim_path)
+    df.to_csv(interim_path,index=False)
 
-    except Exception as e:
-        print(e)
+   
 
 if __name__ == '__main__':
     args=argparse.ArgumentParser()

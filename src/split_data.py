@@ -9,7 +9,7 @@ def split_and_save_data(config_path):
     config=read_params(config_path)
     train_data_path=config['split_data']['train_path']
     test_data_path=config['split_data']['test_path']
-    raw_data_path=config['load_data']['raw_dataset_csv']
+    raw_data_path=config['preprocess']['preprocess_data_dir']
     split_ratio=config['split_data']['test_size']
     
     random_state=config['base']['random_state']
