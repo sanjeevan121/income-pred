@@ -1,0 +1,53 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=config/params.yaml
+    deps:
+    - path: data_given/data.csv
+      md5: 36330da1e706cf4f8cba1dbe6d437011
+      size: 3844210
+    - path: src/get_data.py
+      md5: 39f9af20c39608cae24b791392f2862b
+      size: 666
+    - path: src/load_data.py
+      md5: 970ff80c1b5598f3f55cd05a68e57089
+      size: 659
+    outs:
+    - path: data/raw/train.csv
+      md5: 36330da1e706cf4f8cba1dbe6d437011
+      size: 3811648
+  preprocess_data:
+    cmd: python src/preprocess.py --config=config/params.yaml
+    deps:
+    - path: data/raw/train.csv
+      md5: 36330da1e706cf4f8cba1dbe6d437011
+      size: 3811648
+    - path: src/categorical_encoding.py
+      md5: 36972b7ca4b97d25f2d91725ed0a51e7
+      size: 2857
+    - path: src/numerical_scaling.py
+      md5: 40dd6fb1dbc1329d877e35d8c0ecff60
+      size: 1253
+    - path: src/preprocess.py
+      md5: b4d0899dc61f89ff895324f501189457
+      size: 1817
+    outs:
+    - path: data/interim/interim_data.csv
+      md5: c81fe3bb376d1ef43d52ff1e4d266be9
+      size: 4735812
+  split_data:
+    cmd: python src/split_data.py --config=config/params.yaml
+    deps:
+    - path: data/interim/interim_data.csv
+      md5: c81fe3bb376d1ef43d52ff1e4d266be9
+      size: 4735812
+    - path: src/split_data.py
+      md5: 13b64e3ed6ee48bbf2a910724b96f5ae
+      size: 1080
+    outs:
+    - path: data/processed/test_data.csv
+      md5: 369de5413f32b25b36ae4621875c4f18
+      size: 923487
+    - path: data/processed/train_data.csv
+      md5: 76174feb9c2ac8aef864a3740467f6ec
+      size: 3692518

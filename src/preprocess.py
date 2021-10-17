@@ -31,7 +31,12 @@ def preprocessor(config_path):
     for i in range(5,27):
         df[i]=df[i].apply(lambda x: int(x))
 
-    print(interim_path)
+    df.columns=['workclass_0', 'workclass_1', 'education_0', 'education_1',
+       'marital-status_0', 'marital-status_1', 'occupation_0', 'occupation_1',
+       'occupation_2', 'relationship_0', 'relationship_1', 'relationship_2',
+       'race_0', 'race_1', 'race_2', 'sex_0', 'sex_1', 'country_0',
+       'country_1', 'country_2', 'country_3',
+       'age','education-num','capital-gain','capital-loss','hours-per-week','Output']
     df.to_csv(interim_path,index=False)
 
    

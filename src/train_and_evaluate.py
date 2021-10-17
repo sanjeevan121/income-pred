@@ -10,6 +10,7 @@ from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix,classification_report,roc_auc_score,f1_score,precision_score,recall_score
+import joblib
 
 def eval_metrics(test_y,pred_y):
     precision=precision_score(test_y,pred_y)
@@ -26,13 +27,12 @@ def train_and_evaluate(config_path):
     random_state=config['base']['random_state']
     model_dir=config['model_dir']
 
-    c=config['training']['SVC']['params']['C']
-    kernel=config['training']['SVC']['params']['kernel']
-    degree=config['training']['SVC']['params']['degree']
-    gamma=config['training']['SVC']['params']['gamma']
-    tol=config['training']['SVC']['params']['tol']
-    break_ties=config['training']['SVC']['params']['break_ties']
-
+    c=config['training']['SVC']['C']
+    kernel=config['training']['SVC']['kernel']
+    degree=config['training']['SVC']['degree']
+    gamma=config['training']['SVC']['gamma']
+    tol=config['training']['SVC']['tol']
+   
     target=config['base']['target_col']
     
 
@@ -50,13 +50,20 @@ def train_and_evaluate(config_path):
                 degree=degree,
                 gamma=gamma,
                 tol=tol,
-                verbose=3,
-                break_ties=break_ties)
+                verbose=1,
+                random_state=random_state,
+                )
                 
     svc_clf.fit(train_x,train_y)
         
     preds=svc_clf.predict(test_x)
     (precision,recall,f1,roc_auc)=eval_metrics(test_y,preds)
+
+    print("Support Vector Classifier model (C={}, kernel={},degree={},gamma={},tol={}):".format(c,kernel,degree,gamma,tol))
+    print("  precision: %s" % precision)
+    print("  recall: %s" % recall)
+    print("  f1_score: %s" % f1)
+    print("  roc_auc: %s" % roc_auc)
 
     scores_file=config['reports']['scores']
     params_file=config['reports']['params']
@@ -80,6 +87,11 @@ def train_and_evaluate(config_path):
             'tol':tol
         }
         json.dump(params, f,indent=2)
+    
+    os.makedirs(model_dir, exist_ok=True)
+    model_path = os.path.join(model_dir, "model.joblib")
+
+    joblib.dump(svc_clf, model_path)
 
 
 

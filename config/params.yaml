@@ -47,8 +47,7 @@ split_data:
 
 
 
-saved_models:
-  model_dir: models
+model_dir: saved_models
 
 reports:
   params: reports/params.json
@@ -84,7 +83,7 @@ training:
     degree: 3
     gamma: scale
     tol: 0.001
-    break_ties: True
+    
 
 #  random_forest:
 #    cv: 5
