@@ -1,9 +1,0 @@
-{   "workclass": "str",
-    "education": "str",
-    "marital-status": "str",
-    "occupation": "str",
-    "relationship": "str",
-    "race": "str",
-    "sex": "str",
-    "country": "str"
-}
