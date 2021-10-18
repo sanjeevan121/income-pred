@@ -7,6 +7,10 @@ from prediction_service.prediction import form_response, api_response
 import prediction_service
 import category_encoders as ce
 import scipy.stats as stat
+import category_encoders as ce
+import scipy.stats as stat
+from src.categorical_encoding import encode_categories
+from src.numerical_scaling import scale_data
 
 
 input_data = {"num_incorrect_range":

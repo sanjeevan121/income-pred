@@ -11,6 +11,7 @@ import category_encoders as ce
 import scipy.stats as stat
 from src.get_data import read_params
 
+
 params_path = "config/params.yaml"
 schema_num_path = os.path.join("prediction_service", "schema_num.json")
 schema_cat_path = os.path.join("prediction_service", "schema_cat.json")
@@ -34,6 +35,7 @@ def read_params(config_path=params_path):
     return config
 
 def prepare_data(config_path=params_path):
+    encoder_file=config_path['transformers']['base_n_encoder']
     cat=encode_categories(config_path)
     num=scale_data(config_path)
     data_cat=np.array(cat)

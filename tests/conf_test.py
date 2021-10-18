@@ -2,7 +2,10 @@ import pytest
 import yaml
 import os
 import json
-
+from src.categorical_encoding import encode_categories
+from src.numerical_scaling import scale_data
+import category_encoders as ce
+import scipy.stats as stat
 
 @pytest.fixture
 def config(config_path="config/params.yaml"):
