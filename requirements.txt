@@ -159,7 +159,6 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.4
 SQLAlchemy==1.3.23
 sqlparse==0.4.1
--e git+https://github.com/sanjeevan121/income-pred.git@246cdf41359cf4d0982ecb2ed6a6e82a572bf58b#egg=src
 statsmodels==0.13.0
 tabulate==0.8.9
 text-unidecode==1.3
