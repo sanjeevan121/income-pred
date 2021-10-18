@@ -5,7 +5,7 @@ import json
 
 
 @pytest.fixture
-def config(config_path="params.yaml"):
+def config(config_path="config/params.yaml"):
     with open(config_path) as yaml_file:
         config = yaml.safe_load(yaml_file)
     return config

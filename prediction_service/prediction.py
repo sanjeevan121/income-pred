@@ -6,7 +6,9 @@ import numpy as np
 
 
 params_path = "params.yaml"
-schema_path = os.path.join("prediction_service", "schema_in.json")
+schema_num_path = os.path.join("prediction_service", "schema_num.json")
+schema_cat_path = os.path.join("prediction_service", "schema_cat.json")
+schema_val_num_range_path=os.path.join("prediction_service", "schema_in.json")
 
 class NotInRange(Exception):
     def __init__(self, message="Values entered are not in expected range"):
@@ -32,7 +34,7 @@ def predict(data):
     prediction = model.predict(data).tolist()[0]
     
 
-def get_schema(schema_path=schema_path):
+def get_schema(schema_path=schema):
     with open(schema_path) as json_file:
         schema = json.load(json_file)
     return schema
