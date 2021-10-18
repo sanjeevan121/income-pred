@@ -1,3 +1,0 @@
-prediction_service
-src
-tests
