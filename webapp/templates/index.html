@@ -26,7 +26,7 @@ WineQuality
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://github.com/sanjeevan121/income-pred/tree/dev">source code</a>
+                <a class="nav-link" href="https://github.com/c17hawke/dvc-plus-cml-test">source code</a>
             </li>
         </ul>
     </div>
@@ -50,28 +50,139 @@ WineQuality
                                     <p class="mb-2">Enter the details as indicated:</p>
                                 </blockquote>
                             </label>
-                            <textarea class="form-control" name="fixed_acidity" rows="1"
-                                placeholder="fixed acidity expected range 4.6 to 15.9"></textarea>
-                            <textarea class="form-control" name="volatile_acidity" rows="1"
-                                placeholder="volatile acidity expected range 0.12 to 1.58"></textarea>
-                            <textarea class="form-control" name="citric_acid" rows="1"
-                                placeholder="citric acid expected range 0.0 to 1.0"></textarea>
-                            <textarea class="form-control" name="residual_sugar" rows="1"
-                                placeholder="residual sugar expected range 0.9 to 15.5"></textarea>
-                            <textarea class="form-control" name="chlorides" rows="1" 
-                                placeholder="chlorides expected range 0.012 to 0.611"></textarea>
-                            <textarea class="form-control" name="free_sulfur_dioxide" rows="1"
-                                placeholder="free sulfur dioxide expected range 1.0 to 72.0"></textarea>
-                            <textarea class="form-control" name="total_sulfur_dioxide" rows="1"
-                                placeholder="total sulfur dioxide expected range 6.0 to 289.0"></textarea>
-                            <textarea class="form-control" name="density" rows="1" 
-                                placeholder="density expected range 0.99007 to 1.00369"></textarea>
-                            <textarea class="form-control" name="pH" rows="1" 
-                                placeholder="pH expected range 2.74 to 4.01"></textarea>
-                            <textarea class="form-control" name="sulphates" rows="1" 
-                                placeholder="sulphates expected range 0.33 to 2.0"></textarea>
-                            <textarea class="form-control" name="alcohol" rows="1" 
-                                placeholder="alcohol expected range 8.4 to 14.9"></textarea>
+                            <textarea class="form-control" name="age" rows="1"
+                                placeholder="age expected range 17 to 90"></textarea>
+                            <textarea class="form-control" name="fnlwgt" rows="1"
+                                placeholder="fnlwgt expected range 12285.0 to 1484705.0"></textarea>
+                            <textarea class="form-control" name="education-num" rows="1"
+                                placeholder="education-num expected range 1.0 to 16.0"></textarea>
+                            <textarea class="form-control" name="capital-gains" rows="1"
+                                placeholder="capital gains expected range 0.0 to 99999.0"></textarea>
+                            <textarea class="form-control" name="capital-loss" rows="1" 
+                                placeholder="capital-loss expected range 0.0 to 4000"></textarea>
+                            <textarea class="form-control" name="hours-per-week" rows="1"
+                                placeholder="hour per week expected range 1.0 to 99.0"></textarea>
+                            <div>
+                            <label for="sex">Choose gender:</label>
+                            <select id="sex" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+
+                            <div>
+                            <label for="workclass">Choose working class:</label>
+                            <select id="workclass" name="workclass">
+                            <option value=" State-gov"> State-gov</option>
+                            <option value=" Self-emp-not-inc"> Self-emp-not-inc</option>
+                            <option value=" Private"> Private</option>
+                            <option value=" Federal-gov"> Federal-gov</option>
+                            <option value=" Local-gov"> Local-gov</option>
+                            <option value=" Self-emp-inc"> Self-emp-inc</option>
+                            <option value=" Without-pay"> Without-pay</option>
+                            <option value=" Never-worked"> Never-worked</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+
+                            <div>
+                            <label for="education">Choose highest education:</label>
+                            <select id="education" name="education">
+                            <option value=" Bachelors"> Bachelors</option>
+                            <option value=" HS-grad"> HS-grad</option>
+                            <option value=" 11th"> 11th</option>
+                            <option value=" Masters"> Masters</option>
+                            <option value=" 9th"> 9th</option>
+                            <option value=" Some-college"> Some-college</option>
+                            <option value=" Assoc-acdm"> Assoc-acdm</option>
+                            <option value=" Assoc-voc"> Assoc-voc</option>
+                            <option value=" 7th-8th"> 7th-8th</option>
+                            <option value=" Doctorate"> Doctorate</option>
+                            <option value=" Prof-school"> Prof-school</option>
+                            <option value=" 5th-6th"> 5th-6th</option>
+                            <option value=" 12th"> Assoc-voc</option>
+                            <option value=" 1st-4th"> 1st-4th</option>
+                            <option value=" Preschool"> Preschool</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+
+                            <div>
+                            <label for="marital-status">Choose marital status:</label>
+                            <select id="marital-status" name="marital-status">
+                                <option value=" Never-married"> Never-married</option>
+                                <option value=" Married-civ-spouse"> Married-civ-spouse</option>
+                                <option value=" Divorced"> Divorced</option>
+                                <option value=" Married-spouse-absent"> Married-spouse-absent</option>
+                                <option value=" Separated"> Separated</option>
+                                <option value=" Married-AF-spouse"> Married-AF-spouse</option>
+                                <option value=" Widowed"> Widowed</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+
+                            <div>
+                            <label for="occupation">Choose occupation:</label>
+                            <select id="occupation" name="occupation">
+                                <option value=" Adm-clerical"> Adm-clerical</option>
+                                <option value=" Exec-managerial"> Exec-managerial</option>
+                                <option value=" Handlers-cleaners"> Handlers-cleaners</option>
+                                <option value=" Prof-specialty"> Prof-specialty</option>
+                                <option value=" Other-service"> Other-service</option>
+                                <option value=" Sales"> Sales</option>
+                                <option value=" Craft-repair"> Craft-repair</option>
+                                <option value=" Transport-moving"> Transport-moving</option>
+                                <option value=" Farming-fishing"> Farming-fishing</option>
+                                <option value=" Machine-op-inspct"> Machine-op-inspct</option>
+                                <option value=" Tech-support"> Tech-support</option>
+                                <option value=" Protective-serv"> Protective-serv</option>
+                                <option value=" Armed-Forces"> Armed-Forces</option>
+                                <option value=" Priv-house-serv"> Priv-house-serv</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+
+                            <div>
+                            <label for="relationship">Choose relationship:</label>
+                            <select id="relationship" name="relationship">
+                            <option value=" Not-in-family"> Not-in-family</option>
+                            <option value=" Husband"> Husband</option>
+                            <option value=" Wife"> Wife</option>
+                            <option value=" Own-child"> Own-child</option>
+                            <option value=" Unmarried"> Unmarried</option>
+                            <option value=" Other-relative"> Other-relative</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+
+                            </div>
+                            <label for=" race">Choose race:</label>
+                            <select id=" race" name="race">
+                            <option value=" White"> White</option>
+                            <option value=" Black"> Black</option>
+                            <option value=" Asian-Pac-Islander"> Asian-Pac-Islander</option>
+                            <option value=" Amer-Indian-Eskimo"> Amer-Indian-Eskimo</option>
+                            <option value=" Other"> Other</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
+                            <div>
+                            <label for="country">Choose Country:</label>
+                            <select id="country" name="country">
+                            <option value=" United-States"> United-States</option>
+                            <option value=" Mexico"> Mexico</option>
+                            <option value=" Philippines"> Philippines</option>
+                            <option value=" Germany"> Germany</option>
+                            <option value=" Canada"> Canada </option>
+                            <option value=" Puerto-Rico"> Puerto-Rico</option>
+                            <option value=" El-Salvador"> El-Salvador</option>
+                            <option value=" India"> India</option>
+                            <option value=" Cuba"> Cuba</option>
+                            <option value=" England"> England</option>
+                            </select>
+                            <input type="submit" value="Submit">
+                            </div>
 
                         </div>
 
@@ -93,7 +204,7 @@ WineQuality
                                 </blockquote>
 
                             </label>
-                            <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
+                            <textarea readonly class="form-control" id="exselect" rows="5">{{ response }}</textarea>
                         </div>
                     </form>
                 </div>
