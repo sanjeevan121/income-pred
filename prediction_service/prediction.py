@@ -3,14 +3,13 @@ import os
 import json
 import joblib
 import numpy as np
-from src.categorical_encoding import encode_categories
-from src.numerical_scaling import scale_data
+from src import categorical_encoding
+from src import numerical_scaling
 import pandas as pd
 import numpy as np
 import category_encoders as ce
 import scipy.stats as stat
-from src.get_data import read_params
-
+from src import get_data
 
 params_path = "config/params.yaml"
 schema_num_path = os.path.join("prediction_service", "schema_num.json")
@@ -36,8 +35,8 @@ def read_params(config_path=params_path):
 
 def prepare_data(config_path=params_path):
     encoder_file=config_path['transformers']['base_n_encoder']
-    cat=encode_categories(config_path)
-    num=scale_data(config_path)
+    cat=categorical_encoding.encode_categories(config_path)
+    num=numerical_scaling.scale_data(config_path)
     data_cat=np.array(cat)
     data_num=np.array(num)
     clean_data=np.c_[data_num,data_cat]

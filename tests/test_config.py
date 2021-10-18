@@ -9,8 +9,8 @@ import category_encoders as ce
 import scipy.stats as stat
 import category_encoders as ce
 import scipy.stats as stat
-from src.categorical_encoding import encode_categories
-from src.numerical_scaling import scale_data
+from src import categorical_encoding
+from src import numerical_scaling
 
 
 input_data = {"num_incorrect_range":

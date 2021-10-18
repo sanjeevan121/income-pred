@@ -4,7 +4,8 @@ import argparse
 import os
 import pandas as pd
 import numpy as np
-from get_data import read_params
+from src import get_data
+from src.get_data import read_params
 import pickle
 
 def scale_data(config_path):

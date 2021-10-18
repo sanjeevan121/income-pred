@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as mp
 import category_encoders as ce
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder,OrdinalEncoder,StandardScaler
-import get_data
+from src import get_data
 from src.get_data import read_params
 import pickle 
 import argparse
