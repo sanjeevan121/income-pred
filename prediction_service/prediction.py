@@ -11,7 +11,8 @@ import category_encoders as ce
 import scipy.stats as stat
 from src import get_data
 
-params_path = "config/params.yaml"
+params_path = os.path.join("config","params.yaml")
+schema_all_path = os.path.join("prediction_service", "schema_all.json")
 schema_num_path = os.path.join("prediction_service", "schema_num.json")
 schema_cat_path = os.path.join("prediction_service", "schema_cat.json")
 schema_val_num_range_path=os.path.join("prediction_service", "schema_in.json")
@@ -44,8 +45,7 @@ def prepare_data(config_path=params_path):
     for i in range(5,27):
         df[i]=df[i].apply(lambda x: int(x))
     return df
-    
-    
+        
     
 def predict(data):
     config = read_params(params_path)
@@ -55,7 +55,7 @@ def predict(data):
     prediction = model.predict(data)
     
 
-def get_schema(schema_path=schema_val_num_range_path):
+def get_schema(schema_path=schema_all_path):
     with open(schema_path) as json_file:
         schema = json.load(json_file)
     return schema
@@ -83,8 +83,8 @@ def validate_input(dict_request):
 def form_response(dict_request):
     if validate_input(dict_request):
         data = dict_request.values()
-        for i in range(len(data)):
-            data_num = [list(map(float,data))]
+
+        print(data)
         response = predict(data)
         return response
 
