@@ -78,3 +78,4 @@ def test_api_response_incorrect_col(data=input_data["incorrect_col"]):
     assert res["response"] == prediction_service.prediction.NotInCols().message
 
 """
+#ujji
