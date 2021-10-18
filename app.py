@@ -18,7 +18,7 @@ def index():
     if request.method == "POST":
         try:
             if request.form:
-                data_req = dict(request.form)
+                dict_req = dict(request.form)
                 response = prediction.form_response(dict_req)
                 return render_template("index.html", response=response)
             elif request.json:

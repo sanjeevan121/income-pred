@@ -1,9 +1,10 @@
 LICENSE
 README.md
 setup.py
+prediction_service/__init__.py
+prediction_service/prediction.py
 src/__init__.py
 src/categorical_encoding.py
-src/dboperations.py
 src/get_data.py
 src/load_data.py
 src/numerical_scaling.py
