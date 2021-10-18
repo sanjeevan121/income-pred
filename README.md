@@ -92,8 +92,3 @@ git remote add origin https://github.com/<username>/<git https link>
 ```
 git push -u origin main
 ```
-<<<<<<< HEAD
-```
- dvc remote add -d storage gdrive://<drive id>
-=======
->>>>>>> fe28bc7a6b56beefcbf8a4dd7e34720410281ff0
