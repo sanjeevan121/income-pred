@@ -1,0 +1,6 @@
+{   "age": "numpy.int64",
+    "fnlwgt": "numpy.int64",
+    "education-num": "numpy.int64",
+    "capital-gain": "numpy.int64",
+    "capital-loss": "numpy.int64",
+    "hours-per-week": "numpy.int64"}

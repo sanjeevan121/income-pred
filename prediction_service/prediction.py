@@ -3,9 +3,15 @@ import os
 import json
 import joblib
 import numpy as np
+from src.categorical_encoding import encode_categories
+from src.numerical_scaling import scale_data
+import pandas as pd
+import numpy as np
+import category_encoders as ce
+import scipy.stats as stat
+from src.get_data import read_params
 
-
-params_path = "params.yaml"
+params_path = "config/params.yaml"
 schema_num_path = os.path.join("prediction_service", "schema_num.json")
 schema_cat_path = os.path.join("prediction_service", "schema_cat.json")
 schema_val_num_range_path=os.path.join("prediction_service", "schema_in.json")
@@ -27,14 +33,28 @@ def read_params(config_path=params_path):
         config = yaml.safe_load(yaml_file)
     return config
 
+def prepare_data(config_path=params_path):
+    cat=encode_categories(config_path)
+    num=scale_data(config_path)
+    data_cat=np.array(cat)
+    data_num=np.array(num)
+    clean_data=np.c_[data_num,data_cat]
+    df=pd.DataFrame(clean_data)
+    for i in range(5,27):
+        df[i]=df[i].apply(lambda x: int(x))
+    return df
+    
+    
+    
 def predict(data):
     config = read_params(params_path)
+    data=prepare_data(data)
     model_dir_path = config["webapp_model_dir"]
     model = joblib.load(model_dir_path)
-    prediction = model.predict(data).tolist()[0]
+    prediction = model.predict(data)
     
 
-def get_schema(schema_path=schema):
+def get_schema(schema_path=schema_val_num_range_path):
     with open(schema_path) as json_file:
         schema = json.load(json_file)
     return schema

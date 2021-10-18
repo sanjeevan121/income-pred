@@ -5,71 +5,74 @@ import joblib
 import pytest
 from prediction_service.prediction import form_response, api_response
 import prediction_service
+import category_encoders as ce
+import scipy.stats as stat
 
 
-"""
-input_data = {
-    "incorrect_range": 
-    {"fixed_acidity": 7897897, 
-    "volatile_acidity": 555, 
-    "citric_acid": 99, 
-    "residual_sugar": 99, 
-    "chlorides": 12, 
-    "free_sulfur_dioxide": 789, 
-    "total_sulfur_dioxide": 75, 
-    "density": 2, 
-    "pH": 33, 
-    "sulphates": 9, 
-    "alcohol": 9
-    },
+input_data = {"num_incorrect_range":
+        {"age":14,
+        "fnlwgt":10000,
+        "education-num":20,
+        "capital-gain":150000,
+        "capital-loss":6000,
+        "hours-per-week":120},
 
-    "correct_range":
-    {"fixed_acidity": 5, 
-    "volatile_acidity": 1, 
-    "citric_acid": 0.5, 
-    "residual_sugar": 10, 
-    "chlorides": 0.5, 
-    "free_sulfur_dioxide": 3, 
-    "total_sulfur_dioxide": 75, 
-    "density": 1, 
-    "pH": 3, 
-    "sulphates": 1, 
-    "alcohol": 9
+    "num_correct_range":
+    {"age":20,
+    "fnlwgt":20000,
+    "education-num":10,
+    "capital-gain":50000,
+    "capital-loss":2000,
+    "hours-per-week":45},
+
+    "cat_correct_val":
+    {
+    "workclass": " Private",
+    "education": " HS-grad",
+    "marital-status": " Never-married",
+    "occupation": " Prof-specialty ",
+    "relationship": " Husband",
+    "race": " White",
+    "sex": " Male",
+    "country": " United-States"
     },
 
     "incorrect_col":
-    {"fixed acidity": 5, 
-    "volatile acidity": 1, 
-    "citric acid": 0.5, 
-    "residual sugar": 10, 
-    "chlorides": 0.5, 
-    "free sulfur dioxide": 3, 
-    "total_sulfur dioxide": 75, 
-    "density": 1, 
-    "pH": 3, 
-    "sulphates": 1, 
-    "alcohol": 9
-    }
+    {'age': 5,
+    'fnlwgt': 5,
+    'education-num': 5,
+    'capital-gain': 5,
+    'capital-loss': 5,
+    'hours-per-week': 5,
+    'workclass': "some_string",
+    'education': "some_string",
+    'marital-status': "some_string",
+    'occupation': "some_string",
+    'relationship': "some_string",
+    'race': "some_string",
+    'sex': "some_string",
+    'country': "some_string"
+}
 }
 
-TARGET_range = {
-    "min": 3.0,
-    "max": 8.0
+TARGET_value = {
+    "min": 0,
+    "max": 1
 }
 
-def test_form_response_correct_range(data=input_data["correct_range"]):
+def test_form_response_correct_range(data=input_data["num_correct_range"].update(input_data['cat_correct_val'])):
     res = form_response(data)
-    assert  TARGET_range["min"] <= res <= TARGET_range["max"]
+    assert  res==TARGET_value["min"] or res==TARGET_value["max"]
 
-def test_api_response_correct_range(data=input_data["correct_range"]):
+def test_api_response_correct_range(data=input_data["num_correct_range"]):
     res = api_response(data)
-    assert  TARGET_range["min"] <= res["response"] <= TARGET_range["max"]
+    assert  res==TARGET_value["min"] or res==TARGET_value["max"]
 
-def test_form_response_incorrect_range(data=input_data["incorrect_range"]):
+def test_form_response_incorrect_range(data=input_data["num_incorrect_range"]):
     with pytest.raises(prediction_service.prediction.NotInRange):
         res = form_response(data)
 
-def test_api_response_incorrect_range(data=input_data["incorrect_range"]):
+def test_api_response_incorrect_range(data=input_data["num_incorrect_range"]):
     res = api_response(data)
     assert res["response"] == prediction_service.prediction.NotInRange().message
 
@@ -77,5 +80,3 @@ def test_api_response_incorrect_col(data=input_data["incorrect_col"]):
     res = api_response(data)
     assert res["response"] == prediction_service.prediction.NotInCols().message
 
-"""
-#ujji
